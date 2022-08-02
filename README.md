@@ -62,3 +62,5 @@
 - belongs_to :brand dependent: :destroy
 - has_many :images dependent: :destroy
 - belongs_to_active_hash :prefecture
+
+
