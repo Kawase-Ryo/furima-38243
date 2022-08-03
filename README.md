@@ -15,40 +15,9 @@
 
 ### Association
 
-- has_many :products dependent: :destroy
-- belongs_to :destination dependent: :destroy
+- has_many :destination dependent: :destroy
 
-## destination テーブル
-
-| Column             | Type   | Options                     |
-| ------------------ | ------ | -----------                 |
-| family_name        | string | null: false                 |
-| first_name         | string | null: false                 |
-| family_name_kana   | string | null: false                 |
-| first_name_kana    | string | null: false                 |
-| user_id            | integer| null: false,foreign_key:true|
-
-### Association
-
-- belongs_to :user
-
-## addresses テーブル
-
-| Column             | Type   | Options                     |
-| ------------------ | ------ | -----------                 |
-| post_code          | string | null: false                 |
-| prefecture         | string | null: false                 |
-| city               | string | null: false                 |
-| adress             | string | null: false                 |
-| building_name      | string |                             |
-| phone_numder       | string | null: false                 |
-| user_id            | integer| null: false,foreign_key:true|
-
-## Association
-
-- belongs_to :user
-
-## puchases テーブル
+## product テーブル（出品）
 
 | Column             | Type   | Options                     |
 | ------------------ | ------ | -----------                 |
@@ -57,10 +26,43 @@
 | description        | string | null: false                 |
 | status_id          | integer| null: false                 |
 | judgment           | string |                             |
-| size               | string | null: false                 |
+| prefecture         | string | null: false                 |
+| category_id        | integer| null: false                 |
+| user_id            | integer| null: false,foreign_key:true|
+
+### Association
+
+- belongs_to :user
+- belongs_to :address
+
+
+## addresses テーブル（配送先）
+
+| Column             | Type   | Options                     |
+| ------------------ | ------ | -----------                 |
+| post_code          | string | null: false                 |
+| prefecture         | string | null: false                 |
+| city               | string | null: false                 |
+| address            | string | null: false                 |
+| building_name      | string |                             |
+| phone_number       | string | null: false                 |
+| user_id            | integer| null: false,foreign_key:true|
+
+### Association
+
+- belongs_to :destination
+
+## purchases テーブル（購入）
+
+| Column             | Type   | Options                     |
+| ------------------ | ------ | -----------                 |
+| name               | string | null: false                 |
+| price              | string | null: false                 |
+| description        | string | null: false                 |
+| status_id          | integer| null: false                 |
+| judgment           | string |                             |
 | cost_id            | integer| null: false                 |
 | days               | string | null: false                 |
-| prefecture_id      | integer|                             |
 | category_id        | integer| null: false                 |
 
 ### Association
