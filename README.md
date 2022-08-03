@@ -19,7 +19,6 @@
 
 - has_many :products dependent: :destroy
 - belongs_to :destination dependent: :destroy
-- belongs_to :card dependent: :destroy
 
 ## destination テーブル
 
@@ -59,7 +58,6 @@
 
 - belongs_to :user dependent: :destroy
 - belongs_to :category dependent: :destroy
-- belongs_to :brand dependent: :destroy
 - has_many :images dependent: :destroy
 - belongs_to_active_hash :prefecture
 
