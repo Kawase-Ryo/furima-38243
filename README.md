@@ -50,7 +50,7 @@
 
 ### Association
 
-- belongs_to :destination
+- belongs_to :purchases
 
 ## purchases テーブル（購入）
 
