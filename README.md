@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :products
-- belongs_to :purchase
+- has_many :purchase
 
 ## products テーブル（出品）
 
@@ -25,12 +25,11 @@
 | name               | string   | null: false                   | 
 | description        | text     | null: false                   |
 | category           | integer  | null: false                   |
-| status_id          | integer  | null: false,foreign_key: true |
-| shipping_charges_id| integer  | null: false,foreign_key: true |
-| prefecture_id      | integer  | null: false,foreign_key: true |
-| days_id            | integer  | null: false,foreign_key: true |
+| status             | integer  | null: false                   |
+| shipping_charges   | integer  | null: false                   |
+| prefecture         | integer  | null: false                   |
+| days               | integer  | null: false                   |
 | price              | integer  | null: false                   |
-| user               | reference| null: false                   |
 | purchase           | reference| null: false                   |
 | user_id            | reference| null: false                   |
 | purchase_id        | reference| null: false                   |
@@ -39,6 +38,7 @@
 
 - belongs_to :users
 - belongs_to :purchases
+- has_one :addresses
 - belongs_to_active_hash :prefecture
 
 ## addresses テーブル（配送先）
@@ -63,10 +63,9 @@
 | ------------------ | ------   | -----------                   |
 | user_id            | reference| null: false                   |
 | purchase_id        | reference| null: false                   |
-| comment            | text     | null: false                   |
 
 ### Association
 
-- belongs_to :addresses
-- has_many :products
-- has_many :users
+- belongs_to :users
+- belongs_to :products
+- has_one :addresses
