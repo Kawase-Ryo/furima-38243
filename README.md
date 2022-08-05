@@ -44,10 +44,10 @@
 | ------------------ | ------   | -----------                  |
 | post_code          | string   | null: false                  |
 | prefectures_id     | string   | null: false,foreign_key: true|
-| city               | string   | null: false,foreign_key: true|
-| address            | string   | null: false,foreign_key: true|
+| city               | string   | null: false                  |
+| address            | string   | null: false                  |
 | building_name      | string   |                              |
-| phone_number       | integer  | null: false,foreign_key: true|
+| phone_number       | integer  | null: false                  |
 
 ### Association
 
