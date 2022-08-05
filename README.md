@@ -31,22 +31,22 @@
 | days_id            | integer  | null: false                  |
 | price              | integer  | null: false                  |
 | user               | references| null: false                 |
-| purchase           | references| null: false                 |
 
 ### Association
 
 - belongs_to :user
-- has_one :purchases
-- belongs_to_active_hash :prefecture
+- has_one :purchase
+- belongs_to :prefecture
 
 ## addresses テーブル（配送先）
 
 | Column             | Type     | Options                      |
 | ------------------ | ------   | -----------                  |
-| post_code_id       | string   | null: false,foreign_key: true|
+| post_code          | string   | null: false                  |
+| prefectures_id     | string   | null: false,foreign_key: true|
 | city_id            | string   | null: false,foreign_key: true|
 | address_id         | string   | null: false,foreign_key: true|
-| building_name_id   | string   | foreign_key: true            |
+| building_name      | string   |                              |
 | phone_number_id    | integer  | null: false,foreign_key: true|
 
 ### Association
