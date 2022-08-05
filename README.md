@@ -26,7 +26,7 @@
 | description        | text     | null: false                  |
 | category_id        | integer  | null: false                  |
 | status_id          | integer  | null: false                  |
-| shipping_charges_id| integer  | null: false                  |
+| shipping_charge_id | integer  | null: false                  |
 | prefecture_id      | integer  | null: false                  |
 | days_id            | integer  | null: false                  |
 | price              | integer  | null: false                  |
@@ -44,10 +44,10 @@
 | ------------------ | ------   | -----------                  |
 | post_code          | string   | null: false                  |
 | prefectures_id     | string   | null: false,foreign_key: true|
-| city_id            | string   | null: false,foreign_key: true|
-| address_id         | string   | null: false,foreign_key: true|
+| city               | string   | null: false,foreign_key: true|
+| address            | string   | null: false,foreign_key: true|
 | building_name      | string   |                              |
-| phone_number_id    | integer  | null: false,foreign_key: true|
+| phone_number       | integer  | null: false,foreign_key: true|
 
 ### Association
 
@@ -55,10 +55,10 @@
 
 ## purchases テーブル（購入）
 
-| Column             | Type     | Options                       |
-| ------------------ | ------   | -----------                   |
+| Column             | Type      | Options                       |
+| ------------------ | ------    | -----------                   |
 | user               | references| null: false,foreign_key: true|
-| purchase           | references| null: false,foreign_key: true|
+| purchase           | integer   | null: false,foreign_key: true|
 
 ### Association
 
