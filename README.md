@@ -37,7 +37,7 @@
 - belongs_to :user
 - has_one :purchase
 
-## addresses テーブル（配送先）
+## address テーブル（配送先）
 
 | Column             | Type      | Options                      |
 | ------------------ | ------    | -----------                  |
