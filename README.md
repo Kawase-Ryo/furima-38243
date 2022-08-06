@@ -28,7 +28,7 @@
 | status_id          | integer   | null: false                  |
 | shipping_charge_id | integer   | null: false                  |
 | prefecture_id      | integer   | null: false                  |
-| days_id            | integer   | null: false                  |
+| shipping_day_id    | integer   | null: false                  |
 | price              | integer   | null: false                  |
 | user               | references| null: false                  |
 
@@ -40,15 +40,15 @@
 
 ## addresses テーブル（配送先）
 
-| Column             | Type     | Options                      |
-| ------------------ | ------   | -----------                  |
-| post_code          | string   | null: false                  |
-| prefectures_id     | string   | null: false                  |
-| city               | string   | null: false                  |
-| address            | string   | null: false                  |
-| building_name      | string   |                              |
-| phone_number       | integer  | null: false                  |
-| purchased_id       | integer  | null: false,foreign_key: true|
+| Column             | Type      | Options                      |
+| ------------------ | ------    | -----------                  |
+| post_code          | string    | null: false                  |
+| prefecture_id      | integer   | null: false                  |
+| city               | string    | null: false                  |
+| address            | string    | null: false                  |
+| building_name      | string    |                              |
+| phone_number       | string    | null: false                  |
+| purchase_id        | references| null: false,foreign_key: true|
 
 ### Association
 
@@ -58,8 +58,8 @@
 
 | Column             | Type      | Options                      |
 | ------------------ | ------    | -----------                  |
-| user_id            | integer   | null: false,foreign_key: true|
-| product_id         | integer   | null: false,foreign_key: true|
+| user               | references| null: false,foreign_key: true|
+| product            | references| null: false,foreign_key: true|
 
 ### Association
 
