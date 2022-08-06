@@ -25,7 +25,7 @@
                 <mxCell id="77" value="address" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
                     <mxGeometry x="310" y="360" width="160" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="78" value="post_code&#10;prefecture_id&#10;city&#10;adrdess&#10;building_name&#10;phone_number&#10;pruchase" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="77">
+                <mxCell id="78" value="post_code&#10;prefecture_id&#10;city&#10;address&#10;building_name&#10;phone_number&#10;pruchase" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="77">
                     <mxGeometry y="26" width="160" height="114" as="geometry"/>
                 </mxCell>
                 <mxCell id="107" value="" style="endArrow=none;html=1;rounded=0;fontColor=none;" edge="1" parent="1" source="33" target="77">
