@@ -12,10 +12,12 @@ class User < ApplicationRecord
     validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
     validates :nickname, uniqueness: true
     validates :email,    uniqueness: true
+    # 全角ひらがな、全角カタカナ、漢字
     validates :family_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
     validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+    # 全角カタカナ
     validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
     validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
-    validates :birthday
+    validates :birth_day
   end
 end
