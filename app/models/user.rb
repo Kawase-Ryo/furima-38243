@@ -13,8 +13,8 @@ class User < ApplicationRecord
     validates :nickname, uniqueness: true
     validates :email,    uniqueness: true
     # 全角ひらがな、全角カタカナ、漢字
-    validates :family_name, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/ }
-    validates :first_name, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/ }
+    validates :family_name, format: { with: /[^\x01-\x7Eｦ-ﾟ]+/ }
+    validates :first_name, format: { with: /[^\x01-\x7Eｦ-ﾟ]+/ }
     # 全角カタカナ
     validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
     validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
