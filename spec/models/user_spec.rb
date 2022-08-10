@@ -34,15 +34,15 @@ require 'rails_helper'
       expect(@user.errors.full_messages).to include("Password can't be blank")
      end
      it "パスワードは、6文字以上での入力が必須であること" do
-      @user.password = 'ab1234'
-      @user.password_confirmation = 'ab1234'
+      @user.password = 'ab123'
+      @user.password_confirmation = 'ab123'
       @user.valid?
       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
      end
       it 'パスワードが半角英数字混合での入力が必須であること' do
-        @user.password = '123456'
-        @user.password_confirmation = '123456'
-        expect(@user).to be_valid
+        @user.password = '1234567'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
      end
      it "パスワードとパスワード（確認）は、値の一致が必須であること" do
       @user.password = 'ab12345'
@@ -58,7 +58,7 @@ require 'rails_helper'
       it 'お名前が（全角）は、名字と名前がそれぞれ必須であること' do
         @user.first_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include('First name kana is invalid')
+        expect(@user.errors.full_messages).to include('First name is invalid')
       end
       it 'お名前カナ（全角）は、全角（カタカナ）での入力が必須であること' do
         @user.family_name_kana = ''
@@ -73,7 +73,7 @@ require 'rails_helper'
       it '生年月日が必須であること' do
           @user.birth_day = ''
           @user.valid?
-          expect(@user.errors.full_messages).to include("Birthday can't be blank")
+          expect(@user.errors.full_messages).to include("Birth day can't be blank")
       end
    end
 end
