@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :user do
     nickname {Faker::Name.name }
     email {Faker::Internet.unique.email }
-    # 英数字になるよう'1a'追加
+    #英数字になるよう'1a'追加
     password { '1a' + Faker::Internet.unique.password(min_length: 6) }
     password_confirmation { password }
     family_name { '山田' }

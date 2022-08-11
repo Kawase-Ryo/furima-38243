@@ -90,8 +90,19 @@ require 'rails_helper'
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
      end
+     it "パスワードが全角だと登録できないこと" do
+      @user.password = 'ああああああ'
+      @user.password_confirmation = 'ああああああ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
+     end
       it 'お名前が（全角）は、姓（全角）に半角文字が含まれていると登録できない' do
         @user.family_name = 'ﾔﾏﾀﾞ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Family name is invalid')
+      end
+      it 'お名前が（全角）は、姓が空では登録できないこと' do
+        @user.family_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include('Family name is invalid')
       end
@@ -100,13 +111,28 @@ require 'rails_helper'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name is invalid')
       end
+        it 'お名前が（全角）は、名が空では登録できないこと' do
+          @user.first_name = ''
+          @user.valid?
+          expect(@user.errors.full_messages).to include('First name is invalid')
+      end
       it 'お名前カナ（全角）は、全角（カタカナ）で姓（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない' do
         @user.family_name_kana = '山田a1/'
         @user.valid?
         expect(@user.errors.full_messages).to include('Family name kana is invalid')
       end
+      it 'お名前カナ（全角）は、全角（カタカナ）で姓（カナ）空では登録できないこと' do
+        @user.family_name_kana = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Family name kana is invalid')
+      end
       it 'お名前カナ（全角）は、全角（カタカナ）で名（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない' do
         @user.first_name_kana = '隆太郎a1/'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name kana is invalid')
+      end
+      it 'お名前カナ（全角）は、全角（カタカナ）で名（カナ）空では登録できないこと' do
+        @user.first_name_kana = ''
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana is invalid')
       end
