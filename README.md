@@ -15,10 +15,10 @@
 
 ### Association
 
-- has_many :products
-- has_many :purchases
+- has_many :items
+- has_many :orders
 
-## products テーブル（出品）
+## items テーブル（出品）
 
 | Column             | Type      | Options                      |
 | ------------------ | ------    | -----------                  |
@@ -30,12 +30,12 @@
 | prefecture_id      | integer   | null: false                  |
 | shipping_day_id    | integer   | null: false                  |
 | price              | integer   | null: false                  |
-| user               | references| null: false                  |
+| user               | references| null: false,foreign_key: true|
 
 ### Association
 
 - belongs_to :user
-- has_one :purchase
+- has_one :order
 
 ## address テーブル（配送先）
 
@@ -47,21 +47,21 @@
 | address            | string    | null: false                  |
 | building_name      | string    |                              |
 | phone_number       | string    | null: false                  |
-| purchase           | references| null: false,foreign_key: true|
+| order              | references| null: false,foreign_key: true|
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :order
 
-## purchases テーブル（購入）
+## orders テーブル（購入）
 
 | Column             | Type      | Options                      |
 | ------------------ | ------    | -----------                  |
 | user               | references| null: false,foreign_key: true|
-| product            | references| null: false,foreign_key: true|
+| item               | references| null: false,foreign_key: true|
 
 ### Association
 
 - belongs_to :user
-- belongs_to :product
+- belongs_to :item
 - has_one :address
