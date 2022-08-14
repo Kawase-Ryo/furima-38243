@@ -37,7 +37,7 @@
 - belongs_to :user
 - has_one :order
 
-## address テーブル（配送先）
+## Payments テーブル（配送先）
 
 | Column             | Type      | Options                      |
 | ------------------ | ------    | -----------                  |
@@ -64,4 +64,4 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :address
+- has_one :Payment

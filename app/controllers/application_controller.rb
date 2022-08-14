@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
     before_action :basic_auth
+    
+    # deviseコントローラー時に下記メソッドを実行
     before_action :configure_permitted_parameters, if: :devise_controller?
 
     private
