@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
     end
 
     def destroy
-        # ログインしているユーザーと同一であればデータを削除する
+        # ログインしているユーザーと同一であればデータを削除、省略型コード
         if @item.user_id == current_user.id
             @item.destroy
         end

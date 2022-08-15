@@ -1,4 +1,5 @@
 const pay = () => {
+
     // PAY.JPテスト公開鍵（payjp.jsライブラリの中で定義されているメソッド）
     Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
     // 入力フォーム全体を、変数に定義
@@ -18,7 +19,6 @@ const pay = () => {
             exp_year: `20${formData.get("order_form[exp_year]")}`,
             cvc: formData.get("order_form[cvc]"),
         };
-
         // 第一引数は15行目で定義したカード情報。第二関数はアロー関数を用いてPAYJP側からのレスポンス・ステータスコードを受け取った後の処理を定義
         Payjp.createToken(card, (status, response) => {
             if (status == 200) {
@@ -41,7 +41,43 @@ const pay = () => {
             document.getElementById("charge-form").submit();
         });
     });
-});
+};
 
 // payページを読み込んだ時に実行
 window.addEventListener("load", pay);
+
+// const pay = ()=> {
+//     Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
+//     const form = document.getElementById("charge-form");
+//     form.addEventListener("submit", (e) => {
+//       e.preventDefault();
+  
+//       const formResult = document.getElementById("charge-form");
+//       const formData = new FormData(formResult);
+//       const card = {
+//         number: formData.get("order_form[number]"),
+//         cvc: formData.get("order_form[cvc]"),
+//         exp_month: formData.get("order_form[exp_month]"),
+//         exp_year: `20${formData.get("order_form[exp_year]")}`,
+//       };
+//       console.log(card);
+  
+//       Payjp.createToken(card, (status, response) => {
+//         if (status == 200) {
+//           const token = response.id;
+//           console.log(token)
+//           const renderDom = document.getElementById("charge-form");
+//           const tokenObj = `<input value=${token} type="hidden" name='token'>`;
+//           renderDom.insertAdjacentHTML("beforeend", tokenObj);
+//         }
+//         document.getElementById("card-number").removeAttribute("name");
+//         document.getElementById("card-cvc").removeAttribute("name");
+//         document.getElementById("card-exp_month").removeAttribute("name");
+//         document.getElementById("card-exp_year").removeAttribute("name");
+  
+//         // document.getElementById("charge-form").submit();
+//       })
+//     })
+//   }
+  
+//   window.addEventListener("load", pay);
