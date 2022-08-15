@@ -5,7 +5,7 @@
 
 require("@rails/ujs").start()
 // JavaScriptイベント発火をするために、画面遷移高速化のGemを無効化する。
-// require("turbolinks").start() //この行を削除する
+// require("turbolinks").start() //この行をコメントアウトする
 require("@rails/activestorage").start()
 require("channels")
 require("../item_price");
