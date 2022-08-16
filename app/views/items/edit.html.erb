@@ -9,7 +9,7 @@ app/assets/stylesheets/items/new.css %>
     <h2 class="items-sell-title">商品の情報を入力</h2>
      <%# モデルデータを第一引数とすることで再利用できる %>
      <%= form_with(model: @item, local: true) do |f| %>
-     
+     <%# インスタンスを渡して、エラー発生時にメッセージを表示する%>
      <%= render 'shared/error_messages', model: f.object %>
 
     <%# 商品画像 %>
@@ -22,6 +22,7 @@ app/assets/stylesheets/items/new.css %>
         <p>
           クリックしてファイルをアップロード
         </p>
+        <%# form_withのブロック変数を利用して格納されている情報を呼び出す %>
         <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
