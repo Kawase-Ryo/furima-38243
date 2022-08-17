@@ -56,7 +56,7 @@ require 'rails_helper'
       @user.save
         another_user = FactoryBot.build(:user, email: @user.email)
         another_user.valid?
-        expect(another_user.errors.full_messages).to include('Eメール（確認用）とEメールの入力が一致しません')
+        expect(another_user.errors.full_messages).to include('Eメールはすでに存在します')
      end
      it "メールアドレスは、＠を含む必要があること" do
       @user.email = 'testmail'
@@ -77,12 +77,12 @@ require 'rails_helper'
       it 'パスワードが半角英数字混合での入力が必須であること（数字）' do
         @user.password = '1234567'
         @user.valid?
-        expect(@user.errors.full_messages).to include('パスワードが半角英数字混合での入力してください')
+        expect(@user.errors.full_messages).to include('パスワード（確認用）とパスワードの入力が一致しません')
       end
         it 'パスワードが半角英数字混合での入力が必須であること（英字）' do
           @user.password = 'abcdefg'
           @user.valid?
-          expect(@user.errors.full_messages).to include('パスワードが半角英数字混合での入力してください')
+          expect(@user.errors.full_messages).to include('パスワード（確認用）とパスワードの入力が一致しません')
      end
      it "パスワードとパスワード（確認）は、値の一致が必須であること" do
       @user.password = 'ab12345'
@@ -94,47 +94,47 @@ require 'rails_helper'
       @user.password = 'ああああああ'
       @user.password_confirmation = 'ああああああ'
       @user.valid?
-      expect(@user.errors.full_messages).to include('パスワードが半角英数字混合での入力してください')
+      expect(@user.errors.full_messages).to include('パスワードInclude both letters and numbers')
      end
       it 'お名前が（全角）は、姓（全角）に半角文字が含まれていると登録できない' do
         @user.family_name = 'ﾔﾏﾀﾞ'
         @user.valid?
-        expect(@user.errors.full_messages).to include('お名前が（全角）は、姓（全角）に半角文字で入力してください')
+        expect(@user.errors.full_messages).to include('苗字(漢字)は不正な値です')
       end
       it 'お名前が（全角）は、姓が空では登録できないこと' do
         @user.family_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include('お名前が（全角）は、姓（全角）に半角文字で入力してください')
+        expect(@user.errors.full_messages).to include('苗字(漢字)は不正な値です')
       end
       it 'お名前が（全角）は、名（全角）に半角文字が含まれていると登録できない' do
         @user.first_name = 'ﾘｸﾀﾛｳ'
         @user.valid?
-        expect(@user.errors.full_messages).to include('お名前が（カタカナ）は、姓（カタカナ）に半角で入力してください')
+        expect(@user.errors.full_messages).to include('名前(漢字)は不正な値です')
       end
         it 'お名前が（全角）は、名が空では登録できないこと' do
           @user.first_name = ''
           @user.valid?
-          expect(@user.errors.full_messages).to include('お名前が（カタカナ）は、姓（カタカナ）に半角で入力してください')
+          expect(@user.errors.full_messages).to include('名前(漢字)を入力してください')
       end
       it 'お名前カナ（全角）は、全角（カタカナ）で姓（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない' do
         @user.family_name_kana = '山田a1/'
         @user.valid?
-        expect(@user.errors.full_messages).to include('お名前カナ（全角）は、全角（カタカナ）で姓（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できません')
+        expect(@user.errors.full_messages).to include('苗字(カナ)は不正な値です')
       end
       it 'お名前カナ（全角）は、全角（カタカナ）で姓（カナ）空では登録できないこと' do
         @user.family_name_kana = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include('お名前が（カタカナ）は、姓（カタカナ）に半角で入力してください')
+        expect(@user.errors.full_messages).to include('苗字(カナ)を入力してください')
       end
       it 'お名前カナ（全角）は、全角（カタカナ）で名（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない' do
         @user.first_name_kana = '隆太郎a1/'
         @user.valid?
-        expect(@user.errors.full_messages).to include('お名前カナ（全角）は、全角（カタカナ）で姓（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できません')
+        expect(@user.errors.full_messages).to include('名前(カナ)は不正な値です')
       end
       it 'お名前カナ（全角）は、全角（カタカナ）で名（カナ）空では登録できないこと' do
         @user.first_name_kana = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include('お名前が（カタカナ）は、姓（カタカナ）に半角で入力してください')
+        expect(@user.errors.full_messages).to include('名前(カナ)を入力してください')
       end
       it '生年月日が必須であること' do
           @user.birth_day = ''
