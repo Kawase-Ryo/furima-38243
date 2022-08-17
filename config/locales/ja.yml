@@ -23,7 +23,7 @@ ja:
         price: 価格
   activemodel:
    attributes:
-      order_formm: 
+      order_form: 
         post_code: 郵便番号
         prefecture_id: 都道府県
         city: 市区町村
