@@ -75,7 +75,7 @@ describe '配送先情報の保存' do
     it '都道府県が空だと保存できないこと' do
       @order_form.prefecture_id = nil
       @order_form.valid?
-      expect(@order_form.errors.full_messages).to include("Prefectureを入力してください", "Prefecturecan't be blank")
+      expect(@order_form.errors.full_messages).to include("Prefectureを入力してください")
     end
     it '市区町村が空だと保存できないこと' do
       @order_form.city = nil
